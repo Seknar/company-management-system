@@ -11,6 +11,12 @@ This repository contains a coding exercise completed as part of a job applicatio
 
 ---
 
+## Requirements
+- Node.js (LTS recommended)
+- Docker Desktop
+
+---
+
 ## Getting Started
 
 ### 1. Install dependencies
@@ -20,12 +26,15 @@ npm install
 ```
 
 ### 2. Configure environment variables
+
 Copy .env.example to .env.local:
+
 ```bash
 cp .env.example .env.local
 ```
 
 ### 3. Set up the Database (MySQL via Docker)
+
 ```bash
 npm run db:setup
 ```
@@ -40,6 +49,26 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+---
+
+## Everyday workflow
+
+### 1. Start the Database
+
+```bash
+npm run db:start
+```
+> ⚠️ Make sure Docker Desktop is running before executing `npm run db:start`.
+
+### 2. Start the development server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+---
 
 ## Database Utilities
 
@@ -48,3 +77,18 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```bash
 npm run db:reset
 ```
+
+---
+
+## Troubleshooting
+
+> If `npm run db:setup` fails the first time, MySQL may still be starting. Wait a few seconds and re-run:
+
+```bash
+npm run migrate
+npm run seed
+```
+
+> Ensure Docker Desktop is running before DB commands.
+
+> If port 3306 is already in use, change the port mapping in docker-compose.yml and update .env.local.

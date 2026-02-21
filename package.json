@@ -9,7 +9,9 @@
     "lint": "eslint",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
-    "db:setup": "docker compose up -d && npm run migrate && npm run seed",
+    "db:start": "docker compose up -d",
+    "db:stop": "docker compose down",
+    "db:setup": "npm run db:start && npm run migrate && npm run seed",
     "db:reset": "docker compose down -v && npm run db:setup"
   },
   "dependencies": {
