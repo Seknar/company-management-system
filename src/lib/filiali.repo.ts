@@ -8,6 +8,10 @@ export type Filiale = {
   automezziCount?: number;
 };
 
+export type FilialeOption = {
+  codice: string;
+};
+
 export async function listFiliali(): Promise<Filiale[]> {
   const rows = await db('filiali')
     .select('filiali.*')
@@ -28,4 +32,17 @@ export async function singleFiliale(
     .select('*')
     .where({codice})
     .first();
+}
+
+export async function listFilialiOptions(): Promise<FilialeOption[]> {
+  return db('filiali').select('codice');
+}
+
+export async function createFiliale(data: Filiale): Promise<void> {
+  await db('filiali').insert({
+    codice: data.codice,
+    indirizzo: data.indirizzo,
+    citta: data.citta,
+    cap: data.cap,
+  });
 }

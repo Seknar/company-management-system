@@ -33,3 +33,13 @@ export async function singleAutomezzo(
     .where({codice})
     .first();
 }
+
+export async function createAutomezzo(data: Automezzo): Promise<void> {
+  await db('automezzi').insert({
+    codice: data.codice,
+    targa: data.targa,
+    marca: data.marca,
+    modello: data.modello,
+    filiale_codice: data.filialeCodice,
+  });
+}
