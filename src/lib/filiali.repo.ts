@@ -25,13 +25,8 @@ export async function listFiliali(): Promise<Filiale[]> {
   }));
 }
 
-export async function singleFiliale(
-  codice: string
-): Promise<Filiale | undefined> {
-  return db('filiali')
-    .select('*')
-    .where({codice})
-    .first();
+export async function findFiliale(codice: string): Promise<Filiale | undefined> {
+  return db('filiali').select('*').where({codice}).first();
 }
 
 export async function listFilialiOptions(): Promise<FilialeOption[]> {
@@ -45,4 +40,8 @@ export async function createFiliale(data: Filiale): Promise<void> {
     citta: data.citta,
     cap: data.cap,
   });
+}
+
+export async function deleteFiliale(codice: string): Promise<void> {
+  await db('filiali').where({codice}).del();
 }

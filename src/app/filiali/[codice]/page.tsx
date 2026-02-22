@@ -1,6 +1,7 @@
-import Link from "next/link";
 import DataView from "@/components/DataView";
-import { singleFiliale } from "@/lib/filiali.repo";
+import type { ViewField } from "@/components/DataView";
+import { findFiliale } from "@/lib/filiali.repo";
+import type { Filiale } from "@/lib/filiali.repo";
 import { notFound } from "next/navigation";
 
 export default async function ShowFilialePage({
@@ -10,10 +11,10 @@ export default async function ShowFilialePage({
 }) {
   const { codice } = await params;
 
-  const filiale = await singleFiliale(codice);
+  const filiale: Filiale | undefined = await findFiliale(codice);
   if (!filiale) notFound();
 
-  const fields = [
+  const fields: ViewField<Filiale>[] = [
     { label: "Codice", value: (f) => f.codice },
     { label: "Indirizzo", value: (f) => f.indirizzo },
     { label: "Città", value: (f) => f.citta },

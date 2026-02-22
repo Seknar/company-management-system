@@ -1,6 +1,6 @@
 import * as React from "react";
 
-type Column<T> = {
+export type Column<T> = {
     header: React.ReactNode;
     cell: (row: T) => React.ReactNode;
     className?: string;
@@ -23,7 +23,7 @@ export default function DataTable<T>({
       <div className="w-full">
         <div className="overflow-x-auto rounded-lg border">
           <table className="min-w-full divide-y">
-            <thead className="bg-primary">
+            <thead className="bg-accent">
               <tr>
                 {columns.map((col, idx) => (
                   <th

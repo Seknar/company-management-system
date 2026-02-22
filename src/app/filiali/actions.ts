@@ -1,6 +1,6 @@
 "use server";
 
-import { createFiliale } from "@/lib/filiali.repo";
+import { createFiliale, deleteFiliale } from "@/lib/filiali.repo";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
@@ -22,4 +22,21 @@ export async function createFilialeAction(formData: FormData) {
 
   revalidatePath("/filiali");
   redirect("/filali");
+}
+
+export async function deleteFilialeAction(formData: FormData) {
+  const codice = String(formData.get("codice") ?? "");
+
+  if (!codice) {
+    throw new Error("Codice filiale mancante.");
+  }
+
+  try {
+    await deleteFiliale(codice);
+  } catch (err: any) {
+    throw err;
+  }
+
+  revalidatePath("/filiali");
+  redirect("/filiali");
 }

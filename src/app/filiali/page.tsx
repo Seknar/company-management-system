@@ -1,16 +1,20 @@
 import Link from "next/link";
 import DataTable from "@/components/DataTable";
+import type { Column } from "@/components/DataTable";
 import { listFiliali } from "@/lib/filiali.repo";
+import type { Filiale } from "@/lib/filiali.repo";
 import { ViewIcon, RemoveIcon } from "@/components/icons";
+import DeleteActionForm from "@/components/DeleteActionForm";
+import { deleteFilialeAction } from "./actions";
 
 export default async function FilialiListPage() {
-  const filiali = await listFiliali();
+  const filiali: Filiale[] = await listFiliali();
 
-  const columns = [
+  const columns: Column<Filiale>[] = [
     {
       header: "Codice",
       cell: (f) => (
-        <Link className="text-accent hover:underline" href={`/filiali/${f.codice}`}>
+        <Link className="text-primary hover:underline" href={`/filiali/${f.codice}`}>
           {f.codice}
         </Link>
       ),
@@ -24,11 +28,16 @@ export default async function FilialiListPage() {
       cell: (f) => (
         <div className="flex justify-center gap-3">
           <Link href={`/filiali/${f.codice}`} title="Visualizza dettagli">
-            <ViewIcon className="w-8 h-8 text-accent" />
+            <ViewIcon className="w-8 h-8 text-primary" />
           </Link>
-          <Link href={`/filiali/${f.codice}`} title="Elimina filiale">
-            <RemoveIcon className="w-8 h-8 text-accent" />
-          </Link>
+          <DeleteActionForm
+            action={deleteFilialeAction}
+            values={{ codice: f.codice }}
+            confirmText="Sei sicuro di voler eliminare questa filiale?"
+            title="Elimina filiale"
+          >
+            <RemoveIcon className="w-8 h-8 text-primary" />
+          </DeleteActionForm>
         </div>
       )
     },

@@ -2,7 +2,7 @@ import DataForm from "@/components/DataForm";
 import type { FormField } from "@/components/DataForm";
 import { listFilialiOptions } from "@/lib/filiali.repo";
 import type { FilialeOption } from "@/lib/filiali.repo";
-import { createAutomezzoAction } from "./actions";
+import { createAutomezzoAction } from "../actions";
 
 export default async function NewAutomezzoPage() {
   const filialiCodici: FilialeOption[] = await listFilialiOptions();

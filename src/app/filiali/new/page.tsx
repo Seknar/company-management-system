@@ -1,6 +1,6 @@
 import DataForm from "@/components/DataForm";
 import type { FormField } from "@/components/DataForm";
-import { createFilialeAction } from "./actions";
+import { createFilialeAction } from "../actions";
 
 export default function NewAutomezzoPage() {
   const fields: FormField[] = [

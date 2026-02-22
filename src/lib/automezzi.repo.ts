@@ -19,9 +19,7 @@ export async function listAutomezzi(): Promise<Automezzo[]> {
     );
 }
 
-export async function singleAutomezzo(
-  codice: string
-): Promise<Automezzo | undefined> {
+export async function findAutomezzo(codice: string): Promise<Automezzo | undefined> {
   return db('automezzi')
     .select(
       'codice',
@@ -42,4 +40,8 @@ export async function createAutomezzo(data: Automezzo): Promise<void> {
     modello: data.modello,
     filiale_codice: data.filialeCodice,
   });
+}
+
+export async function deleteAutomezzo(codice: string): Promise<void> {
+  await db('automezzi').where({codice}).del();
 }

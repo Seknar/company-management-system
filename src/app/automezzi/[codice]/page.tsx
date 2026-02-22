@@ -1,6 +1,8 @@
 import Link from "next/link";
 import DataView from "@/components/DataView";
-import { singleAutomezzo } from "@/lib/automezzi.repo";
+import type { ViewField } from "@/components/DataView";
+import { findAutomezzo } from "@/lib/automezzi.repo";
+import type { Automezzo } from "@/lib/automezzi.repo";
 import { notFound } from "next/navigation";
 
 export default async function ShowAutomezzoPage({
@@ -10,10 +12,10 @@ export default async function ShowAutomezzoPage({
 }) {
   const { codice } = await params;
 
-  const automezzo = await singleAutomezzo(codice);
+  const automezzo: Automezzo | undefined = await findAutomezzo(codice);
   if (!automezzo) notFound();
 
-  const fields = [
+  const fields: ViewField<Automezzo>[] = [
     { label: "Codice", value: (a) => a.codice },
     { label: "Targa", value: (a) => a.targa },
     { label: "Marca", value: (a) => a.marca },

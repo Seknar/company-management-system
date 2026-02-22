@@ -1,6 +1,6 @@
 import * as React from "react";
 
-type ViewField<T> = {
+export type ViewField<T> = {
   label: string;
   value: (data: T) => React.ReactNode;
 };
@@ -18,7 +18,7 @@ export default function DataView<T>({
         <dl className="grid grid-cols-1 gap-4">
           {fields.map((f, i) => (
             <div key={i}>
-              <dt className="text-xs font-semibold uppercase tracking-wide text-primary">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-accent">
                 {f.label}
               </dt>
               <dd className="mt-1 text-sm text-text">{f.value(data)}</dd>
