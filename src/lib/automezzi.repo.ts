@@ -18,3 +18,18 @@ export async function listAutomezzi(): Promise<Automezzo[]> {
       'filiale_codice as filialeCodice'
     );
 }
+
+export async function singleAutomezzo(
+  codice: string
+): Promise<Automezzo | undefined> {
+  return db('automezzi')
+    .select(
+      'codice',
+      'targa',
+      'marca',
+      'modello',
+      'filiale_codice as filialeCodice'
+    )
+    .where({codice})
+    .first();
+}

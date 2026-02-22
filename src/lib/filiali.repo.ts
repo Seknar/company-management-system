@@ -20,3 +20,12 @@ export async function listFiliali(): Promise<Filiale[]> {
     automezziCount: Number(r.automezziCount),
   }));
 }
+
+export async function singleFiliale(
+  codice: string
+): Promise<Filiale | undefined> {
+  return db('filiali')
+    .select('*')
+    .where({codice})
+    .first();
+}
