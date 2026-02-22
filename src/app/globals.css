@@ -4,14 +4,16 @@
   --background: #f8fafc;
   --surface: #fff;
   --text: #030712;
-  --primary: #7008e7;
-  --accent: #7f22fe;
+  --text-inverse: #f8fafc;
+  --primary: #6511d8;
+  --accent: #b115fc;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-text: var(--text);
+  --color-text-inverse: var(--text-inverse);
   --color-primary: var(--primary);
   --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
@@ -23,8 +25,8 @@
     --background: #020618;
     --surface: #0f172b;
     --text: #f8fafc;
-    --primary: #7f22fe;
-    --accent: #c4b4ff;
+    --text-inverse: #030712;
+    --primary: #c4b4ff;
   }
 }
 

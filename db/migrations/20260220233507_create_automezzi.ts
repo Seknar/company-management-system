@@ -13,7 +13,7 @@ export async function up(knex: Knex): Promise<void> {
           .foreign("filiale_codice")
           .references("codice")
           .inTable("filiali")
-          .onDelete("RESTRICT"); // necessary to prevent accidental deletion of automezzi
+          .onDelete("RESTRICT"); // Prevent deletion of filiali with related automezzi
       });
 }
 

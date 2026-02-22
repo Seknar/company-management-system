@@ -1,0 +1,20 @@
+import db from "./db";
+
+export type Automezzo = {
+  codice: string;
+  targa: string;
+  marca: string;
+  modello: string;
+  filialeCodice: string;
+};
+
+export async function listAutomezzi(): Promise<Automezzo[]> {
+  return db('automezzi')
+    .select(
+      'codice',
+      'targa',
+      'marca',
+      'modello',
+      'filiale_codice as filialeCodice'
+    );
+}
