@@ -21,7 +21,7 @@ export default function DataTable<T>({
 }: Props<T>) {
     return (
       <div className="w-full">
-        <div className="overflow-x-auto rounded-lg border">
+        <div className="max-h-[500px] overflow-auto rounded-lg border">
           <table className="min-w-full divide-y">
             <thead className="bg-accent">
               <tr>

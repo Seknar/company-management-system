@@ -7,7 +7,7 @@ This repository contains a coding exercise completed as part of a job applicatio
 
 - Next.js (App Router)
 - MySQL (Docker)
-- Knex (migrations & seeds)
+- Knex (query builder, migrations & seeds)
 
 ---
 
@@ -27,10 +27,15 @@ npm install
 
 ### 2. Configure environment variables
 
-Copy .env.example to .env.local:
+Copy `.env.example` to `.env.local`:
 
+#### macOS / Linux:
 ```bash
 cp .env.example .env.local
+```
+#### Windows:
+```bash
+copy .env.example .env.local
 ```
 
 ### 3. Set up the Database (MySQL via Docker)
@@ -51,7 +56,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ---
 
-## Everyday workflow
+## Daily workflow
 
 ### 1. Start the Database
 

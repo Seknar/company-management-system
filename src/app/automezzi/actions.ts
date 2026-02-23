@@ -22,6 +22,11 @@ export async function createAutomezzoAction(formData: FormData) {
   await createAutomezzo({ codice, targa, marca, modello, filialeCodice });
 
   revalidatePath("/automezzi");
+  revalidatePath("/automezzi/[codice]");
+  revalidatePath("/automezzi/new");
+  revalidatePath("/filiali");
+  revalidatePath("/filiali/[codice]");
+  revalidatePath("/filiali/new");
   redirect("/automezzi");
 }
 

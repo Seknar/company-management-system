@@ -21,7 +21,12 @@ export async function createFilialeAction(formData: FormData) {
   await createFiliale({ codice, indirizzo, citta, cap });
 
   revalidatePath("/filiali");
-  redirect("/filali");
+  revalidatePath("/filiali/[codice]");
+  revalidatePath("/filiali/new");
+  revalidatePath("/automezzi");
+  revalidatePath("/automezzi/[codice]");
+  revalidatePath("/automezzi/new");
+  redirect("/filiali");
 }
 
 export async function deleteFilialeAction(formData: FormData) {
