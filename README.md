@@ -39,7 +39,7 @@ cp .env.example .env.local
 npm run db:setup
 ```
 
-> ⚠️ Make sure Docker Desktop is running before executing `npm run db:setup`.
+> ⚠️ If you encounter errors, check the **Troubleshooting** section.
 
 ### 4. Start the development server
 
@@ -58,7 +58,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```bash
 npm run db:start
 ```
-> ⚠️ Make sure Docker Desktop is running before executing `npm run db:start`.
 
 ### 2. Start the development server
 
@@ -67,6 +66,22 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+---
+
+## REST API
+
+The application exposes REST endpoints:
+
+- GET /api/automezzi
+- GET /api/filiali
+
+Upload endpoints:
+
+- POST /api/automezzi/upload
+- POST /api/filiali/upload
+
+These endpoints retrieve data from the database and send it to the required external service.
 
 ---
 
@@ -82,7 +97,7 @@ npm run db:reset
 
 ## Troubleshooting
 
-> If `npm run db:setup` fails the first time, MySQL may still be starting. Wait a few seconds and re-run:
+> If `npm run db:setup` or `npm run db:reset` fail, MySQL may still be starting. Wait a few seconds and re-run:
 
 ```bash
 npm run migrate

@@ -5,8 +5,8 @@
   --surface: #fff;
   --text: #030712;
   --text-inverse: #f8fafc;
-  --primary: #6511d8;
-  --accent: #b115fc;
+  --primary: #b115fc;
+  --accent: #6511d8;
 }
 
 @theme inline {
@@ -26,7 +26,7 @@
     --surface: #0f172b;
     --text: #f8fafc;
     --text-inverse: #030712;
-    --primary: #c4b4ff;
+    --accent: #c4b4ff;
   }
 }
 

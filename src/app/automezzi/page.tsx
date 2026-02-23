@@ -3,7 +3,7 @@ import DataTable from "@/components/DataTable";
 import type { Column } from "@/components/DataTable";
 import { listAutomezzi } from "@/lib/automezzi.repo";
 import type { Automezzo } from "@/lib/automezzi.repo";
-import { ViewIcon, RemoveIcon } from "@/components/icons";
+import { AddIcon, LeftArrowIcon, ViewIcon, RemoveIcon } from "@/components/icons";
 import DeleteActionForm from "@/components/DeleteActionForm";
 import { deleteAutomezzoAction } from "./actions";
 
@@ -51,16 +51,32 @@ export default async function AutomezziListPage() {
   ];
 
   return (
-    <div className="flex flex-col w-full gap-6">
-      <h1 className="text-3xl font-semibold leading-10 tracking-tight text-text">
-          Lista automezzi
-      </h1>
-      <DataTable
-          columns={columns}
-          data={automezzi}
-          rowKey={(f) => f.codice}
-          emptyText="Nessun automezzo trovato."
-      />
-    </div>
+    <>
+      <div className="flex flex-col w-full gap-6">
+        <h1 className="text-3xl font-semibold leading-10 tracking-tight text-text">
+            Lista automezzi
+        </h1>
+        <DataTable
+            columns={columns}
+            data={automezzi}
+            rowKey={(f) => f.codice}
+            emptyText="Nessun automezzo trovato."
+        />
+        <Link
+          href="/automezzi/new"
+          className="flex items-center justify-center gap-2 text-gray-50 bg-primary hover:saturate-65 rounded-lg px-4 py-2"
+        >
+          <AddIcon className="w-6 h-6" />
+          Inserisci nuovo automezzo
+        </Link>
+      </div>
+      <Link
+        href="/"
+        className="flex items-center justify-center gap-2 text-gray-50 bg-primary hover:saturate-65 rounded-lg px-4 py-2"
+      >
+        <LeftArrowIcon className="w-6 h-6" />
+        Torna alla home
+      </Link>
+    </>
   );
 }

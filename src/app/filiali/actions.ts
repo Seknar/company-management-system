@@ -38,5 +38,10 @@ export async function deleteFilialeAction(formData: FormData) {
   }
 
   revalidatePath("/filiali");
+  revalidatePath("/filiali/[codice]");
+  revalidatePath("/filiali/new");
+  revalidatePath("/automezzi");
+  revalidatePath("/automezzi/[codice]");
+  revalidatePath("/automezzi/new");
   redirect("/filiali");
 }

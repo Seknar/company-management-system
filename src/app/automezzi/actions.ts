@@ -39,5 +39,10 @@ export async function deleteAutomezzoAction(formData: FormData) {
   }
 
   revalidatePath("/automezzi");
+  revalidatePath("/automezzi/[codice]");
+  revalidatePath("/automezzi/new");
+  revalidatePath("/filiali");
+  revalidatePath("/filiali/[codice]");
+  revalidatePath("/filiali/new");
   redirect("/automezzi");
 }

@@ -1,8 +1,10 @@
+import Link from "next/link";
 import DataForm from "@/components/DataForm";
 import type { FormField } from "@/components/DataForm";
 import { listFilialiOptions } from "@/lib/filiali.repo";
 import type { FilialeOption } from "@/lib/filiali.repo";
 import { createAutomezzoAction } from "../actions";
+import { LeftArrowIcon } from "@/components/icons";
 
 export default async function NewAutomezzoPage() {
   const filialiCodici: FilialeOption[] = await listFilialiOptions();
@@ -26,15 +28,24 @@ export default async function NewAutomezzoPage() {
   ];
 
   return (
-    <div className="flex flex-col w-full gap-6">
-      <h1 className="text-3xl font-semibold leading-10 tracking-tight text-text">
-        Inserisci nuovo automezzo
-      </h1>
-      <DataForm
-        fields={fields}
-        submitLabel="Crea"
-        action={createAutomezzoAction}
-      />
-    </div>
+    <>
+      <div className="flex flex-col w-full gap-6">
+        <h1 className="text-3xl font-semibold leading-10 tracking-tight text-text">
+          Inserisci nuovo automezzo
+        </h1>
+        <DataForm
+          fields={fields}
+          submitLabel="Crea"
+          action={createAutomezzoAction}
+        />
+      </div>
+      <Link
+        href="/"
+        className="flex items-center justify-center gap-2 text-gray-50 bg-primary hover:saturate-65 rounded-lg px-4 py-2"
+      >
+        <LeftArrowIcon className="w-6 h-6" />
+        Torna alla home
+      </Link>
+    </>
   );
 }

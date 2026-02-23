@@ -4,6 +4,7 @@ import type { ViewField } from "@/components/DataView";
 import { findAutomezzo } from "@/lib/automezzi.repo";
 import type { Automezzo } from "@/lib/automezzi.repo";
 import { notFound } from "next/navigation";
+import { LeftArrowIcon } from "@/components/icons";
 
 export default async function ShowAutomezzoPage({
   params,
@@ -34,14 +35,23 @@ export default async function ShowAutomezzoPage({
   ];
 
   return (
-    <div className="flex flex-col w-full gap-6">
-      <h1 className="text-3xl font-semibold leading-10 tracking-tight text-text">
-        Automezzo {codice}
-      </h1>
-      <DataView
-        data={automezzo}
-        fields={fields}
-      />
-    </div>
+    <>
+      <div className="flex flex-col w-full gap-6">
+        <h1 className="text-3xl font-semibold leading-10 tracking-tight text-text">
+          Automezzo {codice}
+        </h1>
+        <DataView
+          data={automezzo}
+          fields={fields}
+        />
+      </div>
+      <Link
+        href="/"
+        className="flex items-center justify-center gap-2 text-gray-50 bg-primary hover:saturate-65 rounded-lg px-4 py-2"
+      >
+        <LeftArrowIcon className="w-6 h-6" />
+        Torna alla home
+      </Link>
+    </>
   );
 }

@@ -12,12 +12,14 @@ export type FilialeOption = {
   codice: string;
 };
 
+type FilialeRow = Filiale & { automezziCount: string };
+
 export async function listFiliali(): Promise<Filiale[]> {
-  const rows = await db('filiali')
+  const rows = (await db('filiali')
     .select('filiali.*')
     .leftJoin('automezzi', 'filiali.codice', 'automezzi.filiale_codice')
     .count('automezzi.codice as automezziCount')
-    .groupBy('filiali.codice');
+    .groupBy('filiali.codice')) as unknown as FilialeRow[];
 
   return rows.map(r => ({
     ...r,
